@@ -2,10 +2,8 @@
 // Created by Jakub Szymsza, 2016
 // Inspired by http://jecas.cz/slouceni-js-css
 class Minifier {
-    private $scripts = array();
-    private $styles = array();
-    private $js;
-    private $css;
+    private $scripts = array(); private $styles = array();
+    private $js; private $css;
 
     public function add($source, $type="") { //first division
         if ($source) {
@@ -117,7 +115,7 @@ class Minifier {
         return $this->js = $script;
     }
     
-    public function compile($minify=false) {
+    private function compile($minify) {   // save content from all files in one string
         foreach ($this->styles as $style) {
             $this->css .= file_get_contents($style);
         }
@@ -130,7 +128,9 @@ class Minifier {
             $this->minify();
     }
 
-    public function render($version="") {
+    public function render($minify=true, $version="") {  // final rendering
+        $this->compile($minify);
+
         if ($version) {
             $version = "-".$version;
         }
@@ -140,9 +140,9 @@ class Minifier {
         echo "<link href='cache/style$version.css' rel='stylesheet'><script type='text/javascript' src='cache/script$version.js'></script>";
     }
 
-    public function clear() {
+    public function clear() {  // delete all files inside cache folder
         $files = glob('cache/*'); // get all file names
-        foreach($files as $file){ // iterate files
+        foreach($files as $file){
             if(is_file($file))
                 unlink($file); // delete file
         }
