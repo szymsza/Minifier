@@ -76,7 +76,7 @@ $minifier->clear();       // clear all files in Cache folder
 | Name          | Parameters                                                                          | Description                                        |
 | ------------- | -------------                                                                       | -------------------------------------------------- |
 | add           | **source** (*String*, *Array*), **type** (*String* "css" or "js"; optional)         | add files to be rendered                           |
-| render        | **minify** (*Boleen*; default *true*; optional), **version** (*String*; optional)   | saves and renderes files, returns echoed HTML tags |
+| render        | **minify** (*Boolean*; default *true*; optional), **version** (*String*; optional)   | saves and renderes files, returns echoed HTML tags |
 | clear         | -                                                                                   | deletes all files in the Cache folder              |
 
 Give me a try please! I am absolutely free, simple and smart, your websites will love me!
